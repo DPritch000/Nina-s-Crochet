@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop – Nina's Crochet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <a href="index.html" class="nav-brand">Nina's Crochet</a>
+
+    <div class="nav-center" id="navCenter">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html" class="active">Shop</a></li>
+      </ul>
+      <div class="nav-divider"></div>
+      <div class="nav-social">
+        <a href="#" class="instagram" title="Instagram" aria-label="Follow on Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" class="pinterest" title="Pinterest" aria-label="Follow on Pinterest">
+          <i class="fa-brands fa-pinterest"></i>
+        </a>
+        <a href="#" class="etsy" title="Etsy Shop" aria-label="Visit Etsy Shop">
+          <i class="fa-brands fa-etsy"></i>
+        </a>
+        <a href="#" class="facebook" title="Facebook" aria-label="Follow on Facebook">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" class="tiktok" title="TikTok" aria-label="Follow on TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ── Page Hero ── -->
+  <section class="page-hero">
+    <span class="section-tag">Browse the Collection</span>
+    <h1>The Shop 🛍️</h1>
+    <p>Handmade with heart — find something cozy, cute, or one-of-a-kind just for you.</p>
+  </section>
+
+  <!-- ── Shop Section ── -->
+  <section class="shop-section">
+    <!-- Filter Bar -->
+    <div class="filter-bar" role="group" aria-label="Filter products">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">All Items</button>
+      <button class="filter-btn" onclick="filterProducts('wearables', this)">🧢 Wearables</button>
+      <button class="filter-btn" onclick="filterProducts('accessories', this)">👜 Accessories</button>
+      <button class="filter-btn" onclick="filterProducts('amigurumi', this)">🐰 Amigurumi</button>
+      <button class="filter-btn" onclick="filterProducts('homedecor', this)">🏡 Home Décor</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="products-grid" id="productsGrid">
+
+      <!-- Wearables -->
+      <div class="product-card" data-category="wearables">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🧢+Beanie" alt="Cozy Crochet Beanie" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+          <span class="product-badge">Bestseller</span>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Wearables</span>
+          <h3 class="product-name">Cozy Crochet Beanie</h3>
+          <p class="product-price">$24.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="wearables">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🌸+Cardigan" alt="Fringe Cardigan" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+          <span class="product-badge new-badge">New</span>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Wearables</span>
+          <h3 class="product-name">Fringe Boho Cardigan</h3>
+          <p class="product-price">$79.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="wearables">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🌼+Crop+Top" alt="Daisy Chain Top" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Wearables</span>
+          <h3 class="product-name">Daisy Chain Crop Top</h3>
+          <p class="product-price">$59.99</p>
+        </div>
+      </div>
+
+      <!-- Accessories -->
+      <div class="product-card" data-category="accessories">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🌻+Tote" alt="Sunflower Tote Bag" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+          <span class="product-badge">Bestseller</span>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Accessories</span>
+          <h3 class="product-name">Sunflower Tote Bag</h3>
+          <p class="product-price">$34.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="accessories">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🌿+Market+Bag" alt="Boho Market Bag" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Accessories</span>
+          <h3 class="product-name">Boho Market Bag</h3>
+          <p class="product-price">$29.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="accessories">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🌷+Headband" alt="Flower Crown Headband" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Accessories</span>
+          <h3 class="product-name">Flower Crown Headband</h3>
+          <p class="product-price">$18.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="accessories">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🍓+Keychain" alt="Strawberry Keychain" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+          <span class="product-badge new-badge">New</span>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Accessories</span>
+          <h3 class="product-name">Strawberry Keychain</h3>
+          <p class="product-price">$9.99</p>
+        </div>
+      </div>
+
+      <!-- Amigurumi -->
+      <div class="product-card" data-category="amigurumi">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🐰+Bunny" alt="Amigurumi Bunny" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+          <span class="product-badge new-badge">New</span>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Amigurumi</span>
+          <h3 class="product-name">Amigurumi Bunny</h3>
+          <p class="product-price">$19.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="amigurumi">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=☁️+Cloud+Lovey" alt="Cloud Lovey" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Amigurumi</span>
+          <h3 class="product-name">Cloud Lovey Plush</h3>
+          <p class="product-price">$27.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="amigurumi">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🌙+Bear" alt="Mini Teddy Bear" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Amigurumi</span>
+          <h3 class="product-name">Mini Teddy Bear</h3>
+          <p class="product-price">$16.99</p>
+        </div>
+      </div>
+
+      <!-- Home Décor -->
+      <div class="product-card" data-category="homedecor">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🌸+Blanket" alt="Chunky Throw Blanket" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+          <span class="product-badge">Bestseller</span>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Home Décor</span>
+          <h3 class="product-name">Chunky Throw Blanket</h3>
+          <p class="product-price">$89.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="homedecor">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🌻+Pillow" alt="Granny Square Pillow" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Home Décor</span>
+          <h3 class="product-name">Granny Square Pillow</h3>
+          <p class="product-price">$44.99</p>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="homedecor">
+        <div class="product-img-wrap">
+          <img src="https://placehold.co/400x400/fce8f0/c94f6e?text=🩷+Baby+Set" alt="Pastel Baby Set" />
+          <div class="product-overlay">
+            <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+          </div>
+          <span class="product-badge new-badge">New</span>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Home Décor</span>
+          <h3 class="product-name">Pastel Baby Gift Set</h3>
+          <p class="product-price">$54.99</p>
+        </div>
+      </div>
+
+    </div><!-- /products-grid -->
+  </section>
+
+  <!-- ── Custom Order Banner ── -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <div class="newsletter-icon">✨</div>
+      <h2>Don't See What You're After?</h2>
+      <p>I love making custom pieces! Reach out with your idea — color, size, style — and let's create something just for you.</p>
+      <a href="mailto:hello@ninascrochet.com" class="btn" style="background:var(--white); color:var(--pink-dark); font-weight:800; padding:0.85rem 2.5rem; border-radius:30px;">
+        Request a Custom Order
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>Nina's Crochet</h3>
+        <p>Handmade crochet goods crafted with premium yarns and lots of love. Each piece is made with care, just for you.</p>
+        <div class="footer-social">
+          <a href="#" class="instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="pinterest" title="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+          <a href="#" class="etsy"      title="Etsy"><i class="fa-brands fa-etsy"></i></a>
+          <a href="#" class="facebook"  title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="tiktok"    title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Nina</a></li>
+          <li><a href="products.html">Shop All</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="products.html">Wearables</a></li>
+          <li><a href="products.html">Accessories</a></li>
+          <li><a href="products.html">Amigurumi</a></li>
+          <li><a href="products.html">Home Décor</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@ninascrochet.com">hello@ninascrochet.com</a></li>
+          <li><a href="#">Custom Orders</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Nina's Crochet &nbsp;·&nbsp; Made with 🧶 and ♥</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

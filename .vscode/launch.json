@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome – Nina's Crochet",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/Client",
+      "sourceMaps": true,
+      "preLaunchTask": "Start Dev Server"
+    },
+    {
+      "name": "Attach to Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "url": "http://localhost:3000/*",
+      "webRoot": "${workspaceFolder}/Client",
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug Server (Node)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/index.js",
+      "runtimeArgs": ["--watch"],
+      "restart": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack Debug",
+      "configurations": ["Debug Server (Node)", "Launch Chrome – Nina's Crochet"]
+    }
+  ]
+}
