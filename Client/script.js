@@ -2,18 +2,35 @@
    Nina's Crochet – JavaScript
    ============================================================ */
 
-// ── Hamburger Menu ──────────────────────────────────────────
-const hamburger = document.getElementById('hamburger');
-const navCenter  = document.getElementById('navCenter');
+// ── Shared Navbar Loader ─────────────────────────────────────
+async function loadNavbar() {
+  const placeholder = document.getElementById('navbar-placeholder');
+  if (!placeholder) return;
 
-if (hamburger && navCenter) {
+  try {
+    const res  = await fetch('navbar.html');
+    const html = await res.text();
+    placeholder.outerHTML = html;
+  } catch (e) {
+    console.error('Could not load navbar:', e);
+    return;
+  }
+
+  initHamburger();
+  setActiveLink();
+}
+
+function initHamburger() {
+  const hamburger = document.getElementById('hamburger');
+  const navCenter  = document.getElementById('navCenter');
+  if (!hamburger || !navCenter) return;
+
   hamburger.addEventListener('click', () => {
     const isOpen = navCenter.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-expanded', isOpen);
   });
 
-  // Close menu on outside click
   document.addEventListener('click', (e) => {
     if (!hamburger.contains(e.target) && !navCenter.contains(e.target)) {
       navCenter.classList.remove('open');
@@ -23,16 +40,14 @@ if (hamburger && navCenter) {
   });
 }
 
-// ── Active Nav Link ─────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+function setActiveLink() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a').forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === page) {
-      link.classList.add('active');
-    }
+    link.classList.toggle('active', link.getAttribute('href') === page);
   });
-});
+}
+
+document.addEventListener('DOMContentLoaded', loadNavbar);
 
 // ── Newsletter Form ─────────────────────────────────────────
 function handleNewsletter(e) {
