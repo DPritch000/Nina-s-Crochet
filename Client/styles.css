@@ -978,6 +978,7 @@ footer {
   .values-grid { grid-template-columns: 1fr; }
 
   .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid-3 { grid-template-columns: repeat(2, 1fr); }
   .product-grid-4 { grid-template-columns: repeat(2, 1fr); }
 
   .footer-inner { grid-template-columns: 1fr 1fr; }
@@ -989,6 +990,7 @@ footer {
   .hero-blob { width: 270px; height: 270px; }
   .hero-img-container { width: 210px; height: 210px; }
   .products-grid { grid-template-columns: 1fr; }
+  .product-grid-3 { grid-template-columns: 1fr; }
   .product-grid-4 { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
   .page-hero h1 { font-size: 2.2rem; }
