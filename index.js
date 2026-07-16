@@ -18,16 +18,18 @@ const upload = multer({
   }
 });
 
-// ── Nodemailer transporter ───────────────────────────────────────────────────
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+// ── Nodemailer transporter (lazy – reads env vars at request time) ──────────
+function createTransporter() {
+  return nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+    }
+  });
+}
 
 // ── Static files ─────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'Client')));
@@ -71,7 +73,7 @@ app.post('/api/custom-order', upload.single('referenceImage'), async (req, res) 
   }
 
   try {
-    await transporter.sendMail(mailOptions);
+    await createTransporter().sendMail(mailOptions);
     res.json({ success: true });
   } catch (err) {
     console.error('Email send error:', err);
