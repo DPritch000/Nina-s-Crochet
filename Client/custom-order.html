@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Order – Nina's Crochet | New Paltz, Hudson Valley NY</title>
+  <meta name="description" content="Request a custom handmade crochet piece from Cozy Crafts by Nina in New Paltz, Hudson Valley, NY. Fill out the form and Nina will be in touch!" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Custom Order – Nina's Crochet" />
+  <meta property="og:description" content="Request a one-of-a-kind handmade crochet piece from Nina in the Hudson Valley." />
+  <meta property="og:image" content="Assets/CozyCrafts.png" />
+  <link rel="icon" type="image/png" href="Assets/CozyCrafts.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- ── Page Hero ── -->
+  <section class="page-hero">
+    <span class="section-tag">Let's Create Something Special</span>
+    <h1>Custom Order 🧶</h1>
+    <p>Tell me about your dream piece — color, size, style — and I'll handcraft it just for you.</p>
+  </section>
+
+  <!-- ── Custom Order Form ── -->
+  <section class="custom-order-section">
+    <div class="custom-order-inner">
+
+      <div id="order-success" class="order-success" style="display:none;">
+        <div class="success-icon">🌸</div>
+        <h2>Request Sent!</h2>
+        <p>Thank you! Nina will be in touch with you soon to bring your vision to life.</p>
+        <a href="index.html" class="btn btn-primary">Back to Home</a>
+      </div>
+
+      <form id="customOrderForm" class="custom-order-form" novalidate>
+
+        <!-- Name -->
+        <div class="form-group" id="group-name">
+          <label for="name">Full Name <span class="required-star">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" />
+          <span class="field-error">Please enter your name.</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group" id="group-email">
+          <label for="email">Email Address <span class="required-star">*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" />
+          <span class="field-error">Please enter a valid email address.</span>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group" id="group-phone">
+          <label for="phone">Phone Number <span class="optional-label">(optional)</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel" />
+        </div>
+
+        <!-- Text OK checkbox -->
+        <div class="form-group form-group-check" id="group-textOk">
+          <label class="checkbox-label">
+            <input type="checkbox" id="textOk" name="textOk" />
+            <span class="checkmark"></span>
+            Text communication is okay
+          </label>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group" id="group-address">
+          <label for="address">Shipping Address <span class="required-star">*</span></label>
+          <input type="text" id="address" name="address" placeholder="123 Main St, New Paltz, NY 12561" autocomplete="street-address" />
+          <span class="field-error">Please enter your shipping address.</span>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group" id="group-message">
+          <label for="message">Order Details <span class="required-star">*</span></label>
+          <textarea id="message" name="message" rows="5" placeholder="Describe your custom piece — colors, size, style, any special requests..."></textarea>
+          <span class="field-error">Please describe what you'd like.</span>
+        </div>
+
+        <!-- Reference Image -->
+        <div class="form-group" id="group-referenceImage">
+          <label for="referenceImage">Reference Image <span class="optional-label">(optional)</span></label>
+          <div class="file-upload-wrap">
+            <label for="referenceImage" class="file-upload-btn">
+              <i class="fa-solid fa-image"></i> Choose Image
+            </label>
+            <span class="file-name-display" id="fileNameDisplay">No file chosen</span>
+            <input type="file" id="referenceImage" name="referenceImage" accept="image/*" />
+          </div>
+          <p class="field-hint">JPG, PNG, GIF up to 5 MB</p>
+        </div>
+
+        <div id="form-error-banner" class="form-error-banner" style="display:none;">
+          Please fill in all required fields before submitting.
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+          Send My Request
+        </button>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>Nina's Crochet</h3>
+        <p>Handmade crochet goods crafted with premium yarns and lots of love. Each piece is made with care, just for you.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/cozycraftsbynina?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram" title="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.etsy.com/shop/CozyCraftsbyNina" class="etsy" title="Etsy" target="_blank" rel="noopener"><i class="fa-brands fa-etsy"></i></a>
+          <a href="https://www.tiktok.com/@cozycraftsbynina?is_from_webapp=1&sender_device=pc" class="tiktok" title="TikTok" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Nina</a></li>
+          <li><a href="products.html">Shop All</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="products.html">Amigurumi</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:cozycraftsbynina@gmail.com">Email: cozycraftsbynina@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Nina's Crochet &nbsp;·&nbsp; Made with 🧶 and ♥</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ── File name display ──────────────────────────────────────────────────
+    document.getElementById('referenceImage').addEventListener('change', function () {
+      const display = document.getElementById('fileNameDisplay');
+      display.textContent = this.files.length ? this.files[0].name : 'No file chosen';
+    });
+
+    // ── Form submission ────────────────────────────────────────────────────
+    document.getElementById('customOrderForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const requiredFields = [
+        { id: 'name',    groupId: 'group-name',    validate: v => v.trim() !== '' },
+        { id: 'email',   groupId: 'group-email',   validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+        { id: 'address', groupId: 'group-address', validate: v => v.trim() !== '' },
+        { id: 'message', groupId: 'group-message', validate: v => v.trim() !== '' }
+      ];
+
+      let valid = true;
+
+      // Clear previous errors
+      requiredFields.forEach(({ groupId }) => {
+        document.getElementById(groupId).classList.remove('has-error');
+      });
+      document.getElementById('form-error-banner').style.display = 'none';
+
+      // Validate each required field
+      requiredFields.forEach(({ id, groupId, validate }) => {
+        const el = document.getElementById(id);
+        if (!validate(el.value)) {
+          document.getElementById(groupId).classList.add('has-error');
+          valid = false;
+        }
+      });
+
+      if (!valid) {
+        document.getElementById('form-error-banner').style.display = 'block';
+        document.querySelector('.has-error input, .has-error textarea').focus();
+        return;
+      }
+
+      // Build FormData (supports file upload)
+      const formData = new FormData(this);
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/api/custom-order', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          this.style.display = 'none';
+          document.getElementById('order-success').style.display = 'block';
+        } else {
+          document.getElementById('form-error-banner').textContent = data.error || 'Something went wrong. Please try again.';
+          document.getElementById('form-error-banner').style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send My Request';
+        }
+      } catch {
+        document.getElementById('form-error-banner').textContent = 'Could not connect to the server. Please try again later.';
+        document.getElementById('form-error-banner').style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send My Request';
+      }
+    });
+  </script>
+</body>
+</html>
