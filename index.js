@@ -20,7 +20,9 @@ const upload = multer({
 
 // ── Nodemailer transporter ───────────────────────────────────────────────────
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -73,7 +75,7 @@ app.post('/api/custom-order', upload.single('referenceImage'), async (req, res) 
     res.json({ success: true });
   } catch (err) {
     console.error('Email send error:', err);
-    res.status(500).json({ error: 'Failed to send email. Please try again later.' });
+    res.status(500).json({ error: err.message || 'Failed to send email. Please try again later.' });
   }
 });
 
