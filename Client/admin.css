@@ -1,0 +1,306 @@
+/* ============================================================
+   Admin Panel – Styles
+   ============================================================ */
+
+/* ── Login page ─────────────────────────────────────────── */
+.admin-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-pink);
+  padding: 2rem;
+}
+
+.admin-login-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  padding: 3rem 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.admin-login-brand .brand-name {
+  font-size: 2.4rem;
+  color: var(--pink-dark);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.admin-login-brand h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.admin-login-brand p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 1.8rem;
+}
+
+.admin-back-link {
+  display: block;
+  margin-top: 1.5rem;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.admin-back-link:hover { color: var(--pink-dark); }
+
+/* ── Top bar ─────────────────────────────────────────────── */
+.admin-topbar {
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.admin-topbar .brand-name {
+  font-size: 1.8rem;
+  color: var(--pink-dark);
+}
+
+.admin-topbar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--text-mid);
+  flex: 1;
+}
+
+.admin-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-welcome {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+}
+
+.admin-btn-logout {
+  background: transparent;
+  border: 2px solid var(--pink-accent);
+  color: var(--pink-accent);
+  cursor: pointer;
+  border-radius: 30px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.admin-btn-logout:hover {
+  background: var(--pink-accent);
+  color: var(--white);
+}
+
+/* ── Main layout ─────────────────────────────────────────── */
+.admin-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.admin-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 2rem 2.5rem;
+}
+
+.admin-section-title {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.admin-section-sub {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Form elements ───────────────────────────────────────── */
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.admin-field-full { grid-column: 1 / -1; }
+
+.admin-field label {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-field input,
+.admin-field select,
+.admin-field textarea {
+  padding: 0.65rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--bg);
+  transition: var(--transition);
+  resize: vertical;
+}
+
+.admin-field input:focus,
+.admin-field select:focus,
+.admin-field textarea:focus {
+  outline: none;
+  border-color: var(--pink-accent);
+  background: var(--white);
+}
+
+.admin-field-checkbox { align-self: end; padding-bottom: 0.15rem; }
+
+.admin-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-checkbox-label input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--pink-dark);
+  cursor: pointer;
+}
+
+.req { color: var(--pink-dark); }
+
+.admin-btn-full { width: 100%; margin-top: 0.5rem; }
+
+/* ── Messages ────────────────────────────────────────────── */
+.admin-error {
+  color: #c0392b;
+  background: #fdecea;
+  border: 1px solid #f5c6cb;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.admin-success {
+  color: #1e6e3b;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.admin-loading,
+.admin-empty {
+  text-align: center;
+  color: var(--text-light);
+  padding: 2rem 0;
+  font-size: 0.95rem;
+}
+
+/* ── Admin product grid ──────────────────────────────────── */
+.admin-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Admin controls overlaid on the card */
+.product-card .admin-card-controls {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem 0.8rem;
+  border-top: 1px solid var(--border);
+  justify-content: flex-end;
+}
+
+.admin-feat-btn,
+.admin-del-btn {
+  border: none;
+  border-radius: 30px;
+  padding: 0.35rem 0.85rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.admin-feat-btn {
+  background: var(--bg-pink);
+  color: var(--pink-dark);
+}
+
+.admin-feat-btn:hover,
+.admin-feat-btn.active {
+  background: var(--pink-dark);
+  color: var(--white);
+}
+
+.admin-feat-btn.active {
+  background: var(--pink-dark);
+}
+
+.admin-del-btn {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+.admin-del-btn:hover {
+  background: #c0392b;
+  color: var(--white);
+}
+
+/* ── Admin link in footer ────────────────────────────────── */
+.admin-footer-link {
+  color: var(--text-light);
+  font-size: 0.78rem;
+  opacity: 0.65;
+  transition: var(--transition);
+}
+
+.admin-footer-link:hover { opacity: 1; color: var(--pink-dark); }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .admin-form-grid { grid-template-columns: 1fr; }
+  .admin-field-full { grid-column: 1; }
+  .admin-topbar { padding: 0 1rem; gap: 0.5rem; }
+  .admin-topbar .brand-name { font-size: 1.4rem; }
+  .admin-welcome { display: none; }
+}

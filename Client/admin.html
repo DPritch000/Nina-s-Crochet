@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Nina's Crochet</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="Assets/CozyCrafts.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       LOGIN PANEL  (shown when not authenticated)
+  ══════════════════════════════════════════════════════ -->
+  <div id="loginPanel" class="admin-login-wrap" style="display:none;">
+    <div class="admin-login-card">
+      <div class="admin-login-brand">
+        <span class="brand-name">Nina's Crochet</span>
+        <h2>Admin Login</h2>
+        <p>Enter your admin credentials to continue.</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="admin-field">
+          <label for="loginUsername">Username</label>
+          <input type="text" id="loginUsername" name="username" autocomplete="username" required />
+        </div>
+        <div class="admin-field">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" autocomplete="current-password" required />
+        </div>
+        <p id="loginError" class="admin-error" style="display:none;"></p>
+        <button type="submit" class="btn btn-primary admin-btn-full" id="loginBtn">Sign In</button>
+      </form>
+
+      <a href="index.html" class="admin-back-link">← Back to site</a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       ADMIN DASHBOARD  (shown when authenticated)
+  ══════════════════════════════════════════════════════ -->
+  <div id="dashboardPanel" style="display:none;">
+
+    <!-- Top bar -->
+    <header class="admin-topbar">
+      <span class="brand-name">Nina's Crochet</span>
+      <span class="admin-topbar-title">Admin Dashboard</span>
+      <div class="admin-topbar-actions">
+        <span id="welcomeUser" class="admin-welcome"></span>
+        <a href="index.html" class="btn btn-outline btn-sm">View Site</a>
+        <button id="logoutBtn" class="btn btn-sm admin-btn-logout">Log Out</button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+
+      <!-- ── Add New Post ───────────────────────────────── -->
+      <section class="admin-section">
+        <h2 class="admin-section-title">Add New Product Post</h2>
+
+        <form id="addPostForm" class="admin-form" novalidate>
+          <div class="admin-form-grid">
+            <div class="admin-field">
+              <label for="postTitle">Title <span class="req">*</span></label>
+              <input type="text" id="postTitle" name="title" placeholder="e.g. Amigurumi Hanging Plant" required />
+            </div>
+
+            <div class="admin-field">
+              <label for="postCategory">Category <span class="req">*</span></label>
+              <select id="postCategory" name="category" required>
+                <option value="">— Select —</option>
+                <option value="amigurumi">Amigurumi</option>
+                <option value="wearables">Wearables</option>
+                <option value="accessories">Accessories</option>
+                <option value="home">Home Décor</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="admin-field admin-field-full">
+              <label for="postImageUrl">Image URL</label>
+              <input type="url" id="postImageUrl" name="image_url" placeholder="https://i.etsystatic.com/…" />
+            </div>
+
+            <div class="admin-field admin-field-full">
+              <label for="postEtsyLink">Etsy Listing URL</label>
+              <input type="url" id="postEtsyLink" name="etsy_link" placeholder="https://www.etsy.com/listing/…" />
+            </div>
+
+            <div class="admin-field admin-field-full">
+              <label for="postDescription">Description</label>
+              <textarea id="postDescription" name="description" rows="3" placeholder="Short description of the product…"></textarea>
+            </div>
+
+            <div class="admin-field admin-field-checkbox">
+              <label class="admin-checkbox-label">
+                <input type="checkbox" id="postFeatured" name="featured" />
+                <span>Feature on home page</span>
+              </label>
+            </div>
+          </div>
+
+          <p id="addPostError" class="admin-error" style="display:none;"></p>
+          <p id="addPostSuccess" class="admin-success" style="display:none;"></p>
+          <button type="submit" class="btn btn-primary" id="addPostBtn">Add Product</button>
+        </form>
+      </section>
+
+      <!-- ── Manage Posts ───────────────────────────────── -->
+      <section class="admin-section">
+        <h2 class="admin-section-title">All Products</h2>
+        <p class="admin-section-sub">Toggle the star to feature a product on the home page.</p>
+
+        <div id="postsLoading" class="admin-loading">Loading products…</div>
+        <div id="postsGrid" class="products-grid admin-posts-grid"></div>
+        <p id="noPostsMsg" class="admin-empty" style="display:none;">No products yet. Add one above!</p>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

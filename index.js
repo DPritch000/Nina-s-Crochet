@@ -4,6 +4,10 @@ const express    = require('express');
 const path       = require('path');
 const multer     = require('multer');
 const nodemailer = require('nodemailer');
+const session    = require('express-session');
+
+const authRoutes  = require('./server/authRoutes');
+const postsRoutes = require('./server/postsRoutes');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -33,6 +37,27 @@ function createTransporter() {
 
 // ── Static files ─────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'Client')));
+
+// ── Body parsing ──────────────────────────────────────────────────────────────
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ── Sessions ──────────────────────────────────────────────────────────────────
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'change-this-secret-in-production',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 4 * 60 * 60 * 1000   // 4 hours
+  }
+}));
+
+// ── API routes ────────────────────────────────────────────────────────────────
+app.use('/api/admin', authRoutes);
+app.use('/api/posts', postsRoutes);
 
 // ── Custom Order endpoint ─────────────────────────────────────────────────────
 app.post('/api/custom-order', upload.single('referenceImage'), async (req, res) => {

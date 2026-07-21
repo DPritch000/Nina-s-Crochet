@@ -807,6 +807,16 @@ nav {
   gap: 2rem;
 }
 
+.products-loading,
+.products-empty {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1rem;
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* ── Footer ─────────────────────────────────────────────── */
 footer {
   background: var(--white);

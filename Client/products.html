@@ -32,90 +32,23 @@
 
   <!-- ── Shop Section ── -->
   <section class="shop-section">
-    <!-- Product Grid -->
-    <div class="products-grid" id="productsGrid">
 
-      <!-- Amigurumi -->
-      <div class="product-card" data-category="amigurumi">
-        <div class="product-img-wrap">
-          <!-- TODO: Replace src with your Etsy listing image URL for the Hanging Plant -->
-          <img src="https://i.etsystatic.com/66919134/r/il/d3f64b/8288586295/il_794xN.8288586295_h4a4.jpg" alt="Handmade Amigurumi Hanging Plant" />
-          <div class="product-overlay">
-            <a href="https://www.etsy.com/listing/4536342478/handmade-amigurumi-hanging-plant" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>
-          </div>
-          <span class="product-badge new-badge">New</span>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Amigurumi</span>
-          <h3 class="product-name">Amigurumi Hanging Plant</h3>
-          <p class="product-price">See on Etsy</p>
-        </div>
-      </div>
+    <!-- Filter buttons -->
+    <div class="filter-bar" id="filterBar" style="display:none;">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('amigurumi', this)">Amigurumi</button>
+      <button class="filter-btn" onclick="filterProducts('wearables', this)">Wearables</button>
+      <button class="filter-btn" onclick="filterProducts('accessories', this)">Accessories</button>
+      <button class="filter-btn" onclick="filterProducts('home', this)">Home Décor</button>
+    </div>
 
-      <div class="product-card" data-category="amigurumi">
-        <div class="product-img-wrap">
-          <!-- TODO: Replace src with your Etsy listing image URL for the Pickle Plush -->
-          <img src="https://i.etsystatic.com/66919134/r/il/7cc5e7/8288485085/il_794xN.8288485085_heno.jpg" alt="Handmade Amigurumi Pickle Plush Toy" />
-          <div class="product-overlay">
-            <a href="https://www.etsy.com/listing/4536330086/handmade-amigurumi-pickle-plush-toy" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>
-          </div>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Amigurumi</span>
-          <h3 class="product-name">Amigurumi Pickle Plush</h3>
-          <p class="product-price">See on Etsy</p>
-        </div>
-      </div>
+    <!-- Product Grid (populated by JS) -->
+    <div id="productsLoading" class="products-loading">Loading products…</div>
+    <div class="products-grid" id="productsGrid"></div>
+    <p id="noProductsMsg" class="products-empty" style="display:none;">
+      No products yet — check back soon! 🧶
+    </p>
 
-      <div class="product-card" data-category="amigurumi">
-        <div class="product-img-wrap">
-          <!-- TODO: Replace src with your Etsy listing image URL for the Tomato Plush -->
-          <img src="https://i.etsystatic.com/66919134/r/il/3f21fd/8240557196/il_794xN.8240557196_1ioo.jpg" alt="Handmade Amigurumi Tomato Plush Toy" />
-          <div class="product-overlay">
-            <a href="https://www.etsy.com/listing/4536323320/handmade-amigurumi-tomato-plush-toy" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>
-          </div>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Amigurumi</span>
-          <h3 class="product-name">Amigurumi Tomato Plush</h3>
-          <p class="product-price">See on Etsy</p>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="wearables">
-        <div class="product-img-wrap">
-          <!-- TODO: Replace src with your Etsy listing image URL for the Poncho Cover-Up -->
-          <img src="https://i.etsystatic.com/66919134/r/il/8a65bb/8288731501/il_794xN.8288731501_6obi.jpg" alt="Poncho Cover-Up" />
-          <div class="product-overlay">
-            <a href="https://www.etsy.com/listing/4536366054/lightweight-crochet-summer-poncho-cover?ref=related-2&logging_key=a4540fb84bf8662b4c91922c7eaa286bd4f07e2b%3A4536366054" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>
-          </div>
-          <span class="product-badge new-badge">New</span>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Wearables</span>
-          <h3 class="product-name">Poncho Cover-Up</h3>
-          <p class="product-price">See on Etsy</p>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="accessories">
-        <div class="product-img-wrap">
-          <!-- TODO: Replace src with your Etsy listing image URL for the Vibrant Bubble Stitch Cup Cozy -->
-          <img src="https://i.etsystatic.com/66919134/r/il/00d558/8242995378/il_794xN.8242995378_fein.jpg" alt="Vibrant Bubble Stitch Cup Cozy" />
-          <div class="product-overlay">
-            <a href="https://www.etsy.com/listing/4536628701/vibrant-bubble-stitch-cup-cozy?sr_prefetch=1&pf_from=shop_home&ref=shop_home_active_1&logging_key=4f68eab6f0e7860a91b3af2fda68a800f3fcfb33%3A4536628701" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>
-          </div>
-          <span class="product-badge new-badge">New</span>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Accessories</span>
-          <h3 class="product-name">Vibrant Bubble Stitch Cup Cozy</h3>
-          <p class="product-price">See on Etsy</p>
-        </div>
-      </div>
-
-    </div><!-- /products-grid -->
-    </div><!-- /products-grid -->
   </section>
 
   <!-- ── Custom Order CTA ── -->
@@ -170,6 +103,7 @@
     <div class="footer-bottom">
       <p>&copy; 2025 Nina's Crochet &nbsp;·&nbsp; Made with 🧶 and ♥</p>
       <p>Like what you see? Build your website and your brand too at <a href="https://astronetstudios.com" target="_blank" rel="noopener">astronetstudios.com</a></p>
+      <p><a href="admin.html" class="admin-footer-link">Admin</a></p>
     </div>
   </footer>
 

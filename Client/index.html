@@ -89,53 +89,11 @@
         <p class="subtitle">A little peek at some of our most-loved pieces</p>
       </div>
 
-      <div class="product-grid product-grid-3">
-        <div class="product-card">
-          <div class="product-img-wrap">
-            <!-- TODO: Replace src with your Etsy listing image URL for the Hanging Plant -->
-            <img src="https://i.etsystatic.com/66919134/r/il/d3f64b/8288586295/il_794xN.8288586295_h4a4.jpg" alt="Handmade Amigurumi Hanging Plant" />
-            <div class="product-overlay">
-              <a href="https://www.etsy.com/listing/4536342478/handmade-amigurumi-hanging-plant" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>
-            </div>
-            <span class="product-badge new-badge">New</span>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Amigurumi</span>
-            <h3 class="product-name">Amigurumi Hanging Plant</h3>
-            <p class="product-price">See on Etsy</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img-wrap">
-            <!-- TODO: Replace src with your Etsy listing image URL for the Pickle Plush -->
-            <img src="https://i.etsystatic.com/66919134/r/il/7cc5e7/8288485085/il_794xN.8288485085_heno.jpg" alt="Handmade Amigurumi Pickle Plush Toy" />
-            <div class="product-overlay">
-              <a href="https://www.etsy.com/listing/4536330086/handmade-amigurumi-pickle-plush-toy" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>
-            </div>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Amigurumi</span>
-            <h3 class="product-name">Amigurumi Pickle Plush</h3>
-            <p class="product-price">See on Etsy</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img-wrap">
-            <!-- TODO: Replace src with your Etsy listing image URL for the Tomato Plush -->
-            <img src="https://i.etsystatic.com/66919134/r/il/3f21fd/8240557196/il_794xN.8240557196_1ioo.jpg" alt="Handmade Amigurumi Tomato Plush Toy" />
-            <div class="product-overlay">
-              <a href="https://www.etsy.com/listing/4536323320/handmade-amigurumi-tomato-plush-toy" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>
-            </div>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Amigurumi</span>
-            <h3 class="product-name">Amigurumi Tomato Plush</h3>
-            <p class="product-price">See on Etsy</p>
-          </div>
-        </div>
+      <div class="product-grid product-grid-3" id="featuredGrid">
+        <!-- Populated by script.js from /api/posts/featured -->
       </div>
+
+      <div id="featuredLoading" class="products-loading" style="display:none;">Loading featured products…</div>
 
       <div class="section-cta">
         <a href="products.html" class="btn btn-outline">View All Products</a>
@@ -200,6 +158,7 @@
     <div class="footer-bottom">
       <p>&copy; 2025 Nina's Crochet &nbsp;·&nbsp; Made with 🧶 and ♥</p>
       <p>Like what you see? Build your website and your brand too at <a href="https://astronetstudios.com" target="_blank" rel="noopener">astronetstudios.com</a></p>
+      <p><a href="admin.html" class="admin-footer-link">Admin</a></p>
     </div>
   </footer>
 

@@ -103,3 +103,98 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 });
+
+// ── Shared helper: escape HTML to prevent XSS ───────────────
+function escHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ── Shared helper: build a product card element from a DB post ──
+function buildProductCard(post) {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.dataset.category = post.category || 'other';
+
+  const imgSrc = post.image_url || 'Assets/CozyCrafts.png';
+  const categoryLabel = post.category
+    ? post.category.charAt(0).toUpperCase() + post.category.slice(1)
+    : 'Handmade';
+
+  card.innerHTML = `
+    <div class="product-img-wrap">
+      <img src="${escHtml(imgSrc)}" alt="${escHtml(post.title)}" loading="lazy" />
+      <div class="product-overlay">
+        ${post.etsy_link
+          ? `<a href="${escHtml(post.etsy_link)}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Buy on Etsy</a>`
+          : ''}
+      </div>
+    </div>
+    <div class="product-info">
+      <span class="product-category">${escHtml(categoryLabel)}</span>
+      <h3 class="product-name">${escHtml(post.title)}</h3>
+      <p class="product-price">See on Etsy</p>
+    </div>
+  `;
+  return card;
+}
+
+// ── Products page: load all posts ───────────────────────────
+async function loadProductsPage() {
+  const grid    = document.getElementById('productsGrid');
+  const loading = document.getElementById('productsLoading');
+  const noMsg   = document.getElementById('noProductsMsg');
+  const filterBar = document.getElementById('filterBar');
+  if (!grid) return;
+
+  try {
+    const res   = await fetch('/api/posts');
+    const posts = await res.json();
+
+    if (loading) loading.style.display = 'none';
+
+    if (!Array.isArray(posts) || posts.length === 0) {
+      if (noMsg) noMsg.style.display = 'block';
+      return;
+    }
+
+    if (filterBar) filterBar.style.display = '';
+    posts.forEach(post => grid.appendChild(buildProductCard(post)));
+  } catch (err) {
+    if (loading) loading.textContent = 'Could not load products. Please try again later.';
+    console.error('Products load error:', err);
+  }
+}
+
+// ── Home page: load featured posts ──────────────────────────
+async function loadFeaturedProducts() {
+  const grid    = document.getElementById('featuredGrid');
+  const loading = document.getElementById('featuredLoading');
+  if (!grid) return;
+
+  if (loading) loading.style.display = 'block';
+
+  try {
+    const res   = await fetch('/api/posts/featured');
+    const posts = await res.json();
+
+    if (loading) loading.style.display = 'none';
+
+    if (Array.isArray(posts) && posts.length > 0) {
+      posts.forEach(post => grid.appendChild(buildProductCard(post)));
+    }
+    // If no featured posts, the section simply stays empty / hidden gracefully
+  } catch (err) {
+    if (loading) loading.style.display = 'none';
+    console.error('Featured products load error:', err);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadProductsPage();
+  loadFeaturedProducts();
+});
