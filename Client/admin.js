@@ -8,7 +8,7 @@ const dashboardPanel = document.getElementById('dashboardPanel');
 // ── Boot: check if already logged in ────────────────────────
 async function boot() {
   try {
-    const res  = await fetch('/api/admin/session');
+    const res  = await fetch('/api/admin/session', { credentials: 'same-origin' });
     const data = await res.json();
     if (data.loggedIn) {
       showDashboard(data.username);
@@ -46,9 +46,10 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
   try {
     const res  = await fetch('/api/admin/login', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ username, password })
+      method:      'POST',
+      credentials: 'same-origin',
+      headers:     { 'Content-Type': 'application/json' },
+      body:        JSON.stringify({ username, password })
     });
     const data = await res.json();
 
@@ -69,7 +70,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
 // ── Logout ───────────────────────────────────────────────────
 document.getElementById('logoutBtn').addEventListener('click', async () => {
-  await fetch('/api/admin/logout', { method: 'POST' });
+  await fetch('/api/admin/logout', { method: 'POST', credentials: 'same-origin' });
   showLogin();
 });
 
@@ -145,7 +146,7 @@ async function loadPosts() {
   noMsg.style.display = 'none';
 
   try {
-    const res   = await fetch('/api/posts');
+    const res   = await fetch('/api/posts', { credentials: 'same-origin' });
     const posts = await res.json();
 
     loading.style.display = 'none';
@@ -184,9 +185,10 @@ document.getElementById('addPostForm').addEventListener('submit', async (e) => {
 
   try {
     const res  = await fetch('/api/posts', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(body)
+      method:      'POST',
+      credentials: 'same-origin',
+      headers:     { 'Content-Type': 'application/json' },
+      body:        JSON.stringify(body)
     });
     const data = await res.json();
 
@@ -219,9 +221,10 @@ async function toggleFeatured(id, newValue, cardEl) {
 
   try {
     const res  = await fetch(`/api/posts/${id}`, {
-      method:  'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ featured: newValue })
+      method:      'PUT',
+      credentials: 'same-origin',
+      headers:     { 'Content-Type': 'application/json' },
+      body:        JSON.stringify({ featured: newValue })
     });
     const data = await res.json();
 
@@ -248,7 +251,7 @@ async function deletePost(id, cardEl) {
   btn.textContent = 'Deleting…';
 
   try {
-    const res = await fetch(`/api/posts/${id}`, { method: 'DELETE' });
+    const res = await fetch(`/api/posts/${id}`, { method: 'DELETE', credentials: 'same-origin' });
     if (res.ok) {
       cardEl.remove();
       const grid = document.getElementById('postsGrid');

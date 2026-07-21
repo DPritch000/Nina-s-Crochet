@@ -38,7 +38,11 @@ router.post('/login', async (req, res) => {
   req.session.regenerate((err) => {
     if (err) return res.status(500).json({ error: 'Session error.' });
     req.session.user = { user_id: user.user_id, username: user.username, admin: true };
-    res.json({ success: true });
+    // Explicitly save so the session is written before the next request reads it
+    req.session.save((saveErr) => {
+      if (saveErr) return res.status(500).json({ error: 'Session error.' });
+      res.json({ success: true });
+    });
   });
 });
 
