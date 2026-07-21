@@ -286,6 +286,69 @@
   color: var(--white);
 }
 
+.admin-edit-btn {
+  background: var(--bg-pink);
+  color: var(--text-mid);
+}
+
+.admin-edit-btn:hover {
+  background: var(--pink-medium);
+  color: var(--text);
+}
+
+/* ── Edit modal ──────────────────────────────────────────────*/
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(61, 24, 40, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.admin-modal {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.admin-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.admin-modal-header .admin-section-title { margin-bottom: 0; }
+
+.admin-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-light);
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.admin-modal-close:hover { background: var(--bg-pink); color: var(--pink-dark); }
+
+.admin-modal-footer {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.2rem;
+}
+
 /* ── Admin link in footer ────────────────────────────────── */
 .admin-footer-link {
   color: var(--text-light);

@@ -106,6 +106,9 @@ function buildAdminCard(post) {
       <button class="admin-feat-btn ${featuredClass}" data-id="${post.post_id}">
         ${escHtml(featuredLabel)}
       </button>
+      <button class="admin-edit-btn" data-id="${post.post_id}">
+        ✏️ Edit
+      </button>
       <button class="admin-del-btn" data-id="${post.post_id}">
         🗑 Delete
       </button>
@@ -115,6 +118,11 @@ function buildAdminCard(post) {
   // Featured toggle
   card.querySelector('.admin-feat-btn').addEventListener('click', () =>
     toggleFeatured(post.post_id, !post.featured, card)
+  );
+
+  // Edit
+  card.querySelector('.admin-edit-btn').addEventListener('click', () =>
+    openEditModal(post, card)
   );
 
   // Delete
@@ -269,6 +277,90 @@ async function deletePost(id, cardEl) {
     alert('Network error. Please try again.');
   }
 }
+
+// ── Edit modal ───────────────────────────────────────────────
+const editModal   = document.getElementById('editModal');
+let   _editCard   = null;   // reference to the card being edited
+
+function openEditModal(post, card) {
+  _editCard = card;
+  document.getElementById('editPostId').value        = post.post_id;
+  document.getElementById('editTitle').value         = post.title         || '';
+  document.getElementById('editCategory').value      = post.category      || '';
+  document.getElementById('editImageUrl').value      = post.image_url     || '';
+  document.getElementById('editEtsyLink').value      = post.etsy_link     || '';
+  document.getElementById('editDescription').value   = post.description   || '';
+  document.getElementById('editFeatured').checked    = !!post.featured;
+  document.getElementById('editPostError').style.display = 'none';
+  editModal.style.display = 'flex';
+  document.getElementById('editTitle').focus();
+}
+
+function closeEditModal() {
+  editModal.style.display = 'none';
+  _editCard = null;
+}
+
+document.getElementById('editModalClose').addEventListener('click', closeEditModal);
+document.getElementById('editCancelBtn').addEventListener('click', closeEditModal);
+
+// Close on backdrop click
+editModal.addEventListener('click', (e) => {
+  if (e.target === editModal) closeEditModal();
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && editModal.style.display !== 'none') closeEditModal();
+});
+
+document.getElementById('editPostForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const id    = document.getElementById('editPostId').value;
+  const btn   = document.getElementById('editSaveBtn');
+  const errEl = document.getElementById('editPostError');
+
+  errEl.style.display = 'none';
+  btn.disabled    = true;
+  btn.textContent = 'Saving…';
+
+  const body = {
+    title:       document.getElementById('editTitle').value.trim(),
+    category:    document.getElementById('editCategory').value,
+    image_url:   document.getElementById('editImageUrl').value.trim(),
+    etsy_link:   document.getElementById('editEtsyLink').value.trim(),
+    description: document.getElementById('editDescription').value.trim(),
+    featured:    document.getElementById('editFeatured').checked
+  };
+
+  try {
+    const res  = await fetch(`/api/posts/${id}`, {
+      method:      'PUT',
+      credentials: 'same-origin',
+      headers:     { 'Content-Type': 'application/json' },
+      body:        JSON.stringify(body)
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      // Rebuild the card in-place with updated data
+      if (_editCard) {
+        const newCard = buildAdminCard(data);
+        _editCard.replaceWith(newCard);
+      }
+      closeEditModal();
+    } else {
+      errEl.textContent   = data.error || 'Failed to save changes.';
+      errEl.style.display = 'block';
+    }
+  } catch {
+    errEl.textContent   = 'Network error. Please try again.';
+    errEl.style.display = 'block';
+  } finally {
+    btn.disabled    = false;
+    btn.textContent = 'Save Changes';
+  }
+});
 
 // ── Start ────────────────────────────────────────────────────
 boot();

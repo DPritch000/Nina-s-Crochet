@@ -5,6 +5,8 @@ const router = express.Router();
 
 // ── Auth guard ────────────────────────────────────────────────────────────────
 function requireAdmin(req, res, next) {
+  console.log('[requireAdmin] sessionID:', req.sessionID);
+  console.log('[requireAdmin] session.user:', req.session?.user);
   if (!req.session.user || !req.session.user.admin) {
     return res.status(401).json({ error: 'Unauthorized.' });
   }

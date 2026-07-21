@@ -34,15 +34,11 @@ router.post('/login', async (req, res) => {
     return res.status(401).json({ error: 'Invalid credentials.' });
   }
 
-  // Regenerate session to prevent session fixation
-  req.session.regenerate((err) => {
+  // Set session directly and explicitly save before responding
+  req.session.user = { user_id: user.user_id, username: user.username, admin: true };
+  req.session.save((err) => {
     if (err) return res.status(500).json({ error: 'Session error.' });
-    req.session.user = { user_id: user.user_id, username: user.username, admin: true };
-    // Explicitly save so the session is written before the next request reads it
-    req.session.save((saveErr) => {
-      if (saveErr) return res.status(500).json({ error: 'Session error.' });
-      res.json({ success: true });
-    });
+    res.json({ success: true });
   });
 });
 

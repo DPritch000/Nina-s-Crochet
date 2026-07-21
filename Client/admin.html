@@ -126,6 +126,69 @@
     </main>
   </div>
 
+  <!-- ══════════════════════════════════════════════════════
+       EDIT MODAL
+  ══════════════════════════════════════════════════════ -->
+  <div id="editModal" class="admin-modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h2 id="editModalTitle" class="admin-section-title">Edit Product</h2>
+        <button class="admin-modal-close" id="editModalClose" aria-label="Close">✕</button>
+      </div>
+
+      <form id="editPostForm" class="admin-form" novalidate>
+        <input type="hidden" id="editPostId" />
+
+        <div class="admin-form-grid">
+          <div class="admin-field">
+            <label for="editTitle">Title <span class="req">*</span></label>
+            <input type="text" id="editTitle" name="title" required />
+          </div>
+
+          <div class="admin-field">
+            <label for="editCategory">Category <span class="req">*</span></label>
+            <select id="editCategory" name="category" required>
+              <option value="">— Select —</option>
+              <option value="amigurumi">Amigurumi</option>
+              <option value="wearables">Wearables</option>
+              <option value="accessories">Accessories</option>
+              <option value="home">Home Décor</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="admin-field admin-field-full">
+            <label for="editImageUrl">Image URL</label>
+            <input type="url" id="editImageUrl" name="image_url" />
+          </div>
+
+          <div class="admin-field admin-field-full">
+            <label for="editEtsyLink">Etsy Listing URL</label>
+            <input type="url" id="editEtsyLink" name="etsy_link" />
+          </div>
+
+          <div class="admin-field admin-field-full">
+            <label for="editDescription">Description</label>
+            <textarea id="editDescription" name="description" rows="3"></textarea>
+          </div>
+
+          <div class="admin-field admin-field-checkbox">
+            <label class="admin-checkbox-label">
+              <input type="checkbox" id="editFeatured" name="featured" />
+              <span>Feature on home page</span>
+            </label>
+          </div>
+        </div>
+
+        <p id="editPostError" class="admin-error" style="display:none;"></p>
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-outline" id="editCancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="editSaveBtn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="admin.js"></script>
 </body>
 </html>
